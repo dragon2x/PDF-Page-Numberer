@@ -61,7 +61,7 @@ export default function Home() {
 
       // 4. Save and Download
       const pdfBytes = await pdfDoc.save();
-      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      const blob = new Blob([new Uint8Array(pdfBytes)], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
 
       const originalName = file.name.replace(/\.pdf$/i, '');
