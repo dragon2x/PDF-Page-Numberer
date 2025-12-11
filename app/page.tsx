@@ -46,13 +46,41 @@ export default function Home() {
 
       for (let i = 0; i < pages.length; i++) {
         const page = pages[i];
-        const { width } = page.getSize();
+        const { width, height } = page.getSize();
+        const rotation = page.getRotation().angle; // Get rotation angle (0, 90, 180, 270)
         const text = `- ${i + 1} -`;
         const textWidth = customFont.widthOfTextAtSize(text, fontSize);
 
+        let x = 0;
+        let y = 0;
+
+        // Calculate position based on rotation
+        // Goal: Always place at bottom center of the visual page
+        switch (rotation) {
+          case 0: // Normal orientation
+            x = (width / 2) - (textWidth / 2);
+            y = 30;
+            break;
+          case 90: // Rotated 90° clockwise
+            x = width - 30;
+            y = (height / 2) - (fontSize / 2);
+            break;
+          case 180: // Rotated 180° (upside down)
+            x = (width / 2) - (textWidth / 2);
+            y = height - 30 - fontSize;
+            break;
+          case 270: // Rotated 270° clockwise (or 90° counter-clockwise)
+            x = 30;
+            y = (height / 2) - (fontSize / 2);
+            break;
+          default:
+            x = (width / 2) - (textWidth / 2);
+            y = 30;
+        }
+
         page.drawText(text, {
-          x: (width / 2) - (textWidth / 2),
-          y: 30, // Bottom margin
+          x: x,
+          y: y,
           size: fontSize,
           font: customFont,
           color: rgb(0, 0, 0),
