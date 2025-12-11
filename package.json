@@ -33,31 +33,5 @@
     "postcss-simple-vars": "^7.0.1",
     "tailwindcss": "^4",
     "typescript": "^5"
-  },
-  "build": {
-    "appId": "com.pdfpagenumberer.app",
-    "productName": "PDF Page Numberer",
-    "directories": {
-      "output": "dist"
-    },
-    "files": [
-      "out/**/*",
-      "electron/**/*",
-      "package.json"
-    ],
-    "extraResources": [
-      {
-        "from": "assets",
-        "to": "assets"
-      }
-    ],
-    "win": {
-      "target": "nsis",
-      "icon": "public/favicon.ico"
-    },
-    "nsis": {
-      "oneClick": false,
-      "allowToChangeInstallationDirectory": true
-    }
   }
 }
