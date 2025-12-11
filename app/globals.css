@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@layer components {
+    /* Custom Scrollbar for WebKit */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgba(156, 163, 175, 0.5); /* gray-400 */
+        border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: rgba(107, 114, 128, 0.8); /* gray-500 */
+    }
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: transparent; /* Allow Electron vibrancy if enabled */
+    overflow: hidden; /* App-like feel, no window scroll */
+}
